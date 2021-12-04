@@ -1,6 +1,6 @@
 use std::fs::File;
-use std::io::BufReader;
 use std::io::prelude::BufRead;
+use std::io::BufReader;
 
 fn main() {
     let f = File::open("inputs/day01/input").unwrap();
@@ -22,13 +22,13 @@ fn main() {
             previous[i] = *depth;
             continue;
         }
-        
+
         // TODO: array unpacking?
-        let current: [isize; 3] = [previous[1], previous[2], *depth]; 
+        let current: [isize; 3] = [previous[1], previous[2], *depth];
 
         let previous_sum: isize = previous.iter().sum();
         let current_sum: isize = current.iter().sum();
-        
+
         if current_sum > previous_sum {
             increases += 1;
         }
