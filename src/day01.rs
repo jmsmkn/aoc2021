@@ -1,19 +1,4 @@
-use std::fs::File;
-use std::io::prelude::BufRead;
-use std::io::BufReader;
-
-fn main() {
-    let f = File::open("inputs/day01/input").unwrap();
-    let reader = BufReader::new(f);
-
-    let mut depths: Vec<isize> = vec![];
-
-    for line_ in reader.lines() {
-        let line = line_.unwrap();
-        let depth = line.trim().parse::<isize>().unwrap();
-        depths.push(depth);
-    }
-
+pub fn solve(depths: Vec<isize>) -> isize {
     let mut previous: [isize; 3] = [0; 3];
     let mut increases = 0;
 
@@ -36,5 +21,5 @@ fn main() {
         previous.copy_from_slice(&current);
     }
 
-    println!("{}", increases);
+    return increases;
 }
